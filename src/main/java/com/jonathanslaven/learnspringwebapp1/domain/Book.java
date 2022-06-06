@@ -1,6 +1,7 @@
 package com.jonathanslaven.learnspringwebapp1.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,17 +12,17 @@ public class Book {
     private Long id;
     public String title;
     public String isbn;
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
-    public Set<Author> authors;
+    public Set<Author> authors = new HashSet<>();
 
     public Book() {
     }
 
-    public Book(String title, String isbn, Set<Author> authors) {
+    public Book(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
-        this.authors = authors;
     }
 
     public Long getId() {
