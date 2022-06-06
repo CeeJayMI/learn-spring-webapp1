@@ -10,12 +10,16 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    public String title;
-    public String isbn;
+    private String title;
+    private String isbn;
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
-    public Set<Author> authors = new HashSet<>();
+    private Set<Author> authors = new HashSet<>();
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @ManyToMany
+    @JoinTable(name = "author_publisher", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "publisher_id"))
+    private Set<Publisher> publishers = new HashSet<>();
 
     public Book() {
     }
@@ -55,6 +59,14 @@ public class Book {
 
     public void setAuthors(Set<Author> authors) {
         this.authors = authors;
+    }
+
+    public Set<Publisher> getPublishers() {
+        return publishers;
+    }
+
+    public void setPublishers(Set<Publisher> publishers) {
+        this.publishers = publishers;
     }
 
     @Override
