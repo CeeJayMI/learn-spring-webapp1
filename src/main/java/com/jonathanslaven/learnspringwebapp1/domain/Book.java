@@ -16,10 +16,8 @@ public class Book {
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
-    @SuppressWarnings("JpaDataSourceORMInspection")
-    @ManyToMany
-    @JoinTable(name = "author_publisher", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "publisher_id"))
-    private Set<Publisher> publishers = new HashSet<>();
+    @ManyToOne
+    private Publisher publisher;
 
     public Book() {
     }
@@ -61,12 +59,12 @@ public class Book {
         this.authors = authors;
     }
 
-    public Set<Publisher> getPublishers() {
-        return publishers;
+    public Publisher getPublisher() {
+        return publisher;
     }
 
-    public void setPublishers(Set<Publisher> publishers) {
-        this.publishers = publishers;
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     @Override
@@ -86,11 +84,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", authors=" + authors +
-                '}';
+        return "Book{" + "id=" + id + ", title='" + title + '\'' + ", isbn='" + isbn + '\'' + ", authors=" + authors + '}';
     }
 }
