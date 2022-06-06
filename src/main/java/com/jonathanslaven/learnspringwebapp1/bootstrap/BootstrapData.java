@@ -26,6 +26,7 @@ public class BootstrapData implements CommandLineRunner {
     public void run(String... args) { // throws Exception {
 
         Publisher pakit = new Publisher("Pakit", "123 Road", "City", "State", "12345");
+        publisherRepository.save(pakit);
 
         Author eric = new Author("Eric", "Evans");
         Book ddd = new Book("Domain Driven Design", "123123");
@@ -51,5 +52,6 @@ public class BootstrapData implements CommandLineRunner {
         System.out.println("Number of Books: " + bookRepository.count());
         System.out.println("Number of Authors: " + authorRepository.count());
         System.out.println("Number of Publishers: " + publisherRepository.count());
+        System.out.println("Publisher's published books: " + pakit.getBooks().size());
     }
 }
