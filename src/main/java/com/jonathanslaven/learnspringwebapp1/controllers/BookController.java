@@ -18,6 +18,7 @@ public class BookController {
     public String getBooks(Model model) {
 
         model.addAttribute("books", bookRepository.findAll());
+        System.out.println("Got books: " + bookRepository.count());
 
         return "books/list";
     }
