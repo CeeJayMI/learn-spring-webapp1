@@ -96,6 +96,6 @@ public class Publisher {
 
     @Override
     public String toString() {
-        return "Publisher{" + "id=" + id + ", name='" + name + '\'' + ", addressLine1='" + addressLine1 + '\'' + ", addressCity='" + addressCity + '\'' + ", addressState='" + addressState + '\'' + ", addressZip='" + addressZip + '\'' + ", books=" + books + '}';
+        return "Publisher{" + "id=" + id + ", name='" + name + '\'' + ", addressLine1='" + addressLine1 + '\'' + ", addressCity='" + addressCity + '\'' + ", addressState='" + addressState + '\'' + ", addressZip='" + addressZip + '}';
     }
 }
